@@ -10,3 +10,5 @@
 - Designed a **journals page** with a progression system (level/XP visualization), laying groundwork for future gamification.  
 
 *Technologies: React, Redux, React Router, Tailwind CSS, React Window, Local Storage*  
+
+**Live**: [Click Here](https://questyio.netlify.app/)
