@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-completed-quest {
+  background-color: #e6f7ff22;
+  /* Light blue, often used for completed tasks */
+  /* Complementary blue for borders */
+  /* You can also add text color adjustments if needed */
+  color: #0050b3;
+  /* Darker blue for text to ensure readability */
+}
