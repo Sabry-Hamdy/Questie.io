@@ -1,4 +1,3 @@
-import React from 'react';
 import { Trophy, Sword, Shield } from 'lucide-react';
 
 export default function Home() {
@@ -11,30 +10,30 @@ export default function Home() {
         <p className="text-text-secondary">Your daily quests await...</p>
       </header>
 
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        <div className="bg-background-secondary rounded-lg p-4 text-center">
-          <Trophy className="w-6 h-6 text-brand-primary mx-auto mb-2" />
+      <div className="mb-8 grid grid-cols-3 gap-4">
+        <div className="rounded-lg bg-background-secondary p-4 text-center">
+          <Trophy className="mx-auto mb-2 h-6 w-6 text-brand-primary" />
           <div className="text-2xl font-bold">12</div>
           <div className="text-xs text-text-secondary">Quests Complete</div>
         </div>
-        <div className="bg-background-secondary rounded-lg p-4 text-center">
-          <Sword className="w-6 h-6 text-accent-purple mx-auto mb-2" />
+        <div className="rounded-lg bg-background-secondary p-4 text-center">
+          <Sword className="mx-auto mb-2 h-6 w-6 text-accent-purple" />
           <div className="text-2xl font-bold">Level 5</div>
           <div className="text-xs text-text-secondary">Hero Rank</div>
         </div>
-        <div className="bg-background-secondary rounded-lg p-4 text-center">
-          <Shield className="w-6 h-6 text-accent-blue mx-auto mb-2" />
+        <div className="rounded-lg bg-background-secondary p-4 text-center">
+          <Shield className="mx-auto mb-2 h-6 w-6 text-accent-blue" />
           <div className="text-2xl font-bold">3</div>
           <div className="text-xs text-text-secondary">Achievements</div>
         </div>
       </div>
 
       <div className="relative mb-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-gradient-amber to-gradient-purple rounded-lg" />
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-gradient-amber to-gradient-purple" />
         <img
           src="https://images.unsplash.com/photo-1506466010722-395aa2bef877?auto=format&fit=crop&w=800"
           alt="Fantasy Map"
-          className="w-full h-48 object-cover rounded-lg opacity-50"
+          className="h-48 w-full rounded-lg object-cover opacity-50"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <h2 className="text-xl font-bold text-text-primary">
@@ -44,7 +43,7 @@ export default function Home() {
       </div>
 
       <section className="mb-8">
-        <h2 className="text-lg font-semibold text-text-primary mb-4">
+        <h2 className="mb-4 text-lg font-semibold text-text-primary">
           Today&apos;s Priority Quests
         </h2>
         <div className="space-y-3">
@@ -73,14 +72,14 @@ function QuestPreview({ title, difficulty, timeLeft }) {
   };
 
   return (
-    <div className="bg-background-secondary rounded-lg p-4 border border-border-primary">
+    <div className="rounded-lg border border-border-primary bg-background-secondary p-4">
       <div className="flex items-center gap-2">
         <span
-          className={`w-2 h-2 rounded-full ${difficultyColors[difficulty]}`}
+          className={`h-2 w-2 rounded-full ${difficultyColors[difficulty]}`}
         />
         <h3 className="font-semibold text-text-primary">{title}</h3>
       </div>
-      <div className="text-text-secondary text-sm mt-1">
+      <div className="mt-1 text-sm text-text-secondary">
         Time remaining: {timeLeft}
       </div>
     </div>

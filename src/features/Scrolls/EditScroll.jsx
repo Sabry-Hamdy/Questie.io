@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { ArrowLeft, Save } from 'lucide-react';
+import { Save } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 import ErrorMessage from '../../components/ErrorMessage';
 import { updateScroll } from './scrollsSlice';
 import StyledInput from '../../components/StyledInput';
+import BackButton from '../../components/BackButton';
 
 export default function EditScroll() {
   const { scrollId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const note = useSelector((state) =>
-    state.scrolls.notes.find((n) => Number(n.id) === Number(scrollId)),
+  const scroll = useSelector((state) =>
+    state.scrolls.scrolls.find((n) => Number(n.id) === Number(scrollId)),
   );
 
-  const [title, setTitle] = useState(note ? note.title : '');
-  const [tome, setTome] = useState(note ? note.tome : '');
-  const [content, setContent] = useState(note ? note.content : '');
+  const [title, setTitle] = useState(scroll ? scroll.title : '');
+  const [tome, setTome] = useState(scroll ? scroll.tome : '');
+  const [content, setContent] = useState(scroll ? scroll.content : '');
 
-  if (!note) {
+  if (!scroll) {
     return <ErrorMessage message="Scroll not found" />;
   }
 
@@ -33,14 +34,14 @@ export default function EditScroll() {
       return;
     }
 
-    const updatedNote = {
-      ...note,
+    const updatedScroll = {
+      ...scroll,
       title,
       tome,
       content,
     };
 
-    dispatch(updateScroll({ id: scrollId, newNote: updatedNote }));
+    dispatch(updateScroll({ id: scrollId, newScroll: updatedScroll }));
 
     toast.success('Scroll updated successfully');
 
@@ -49,13 +50,7 @@ export default function EditScroll() {
 
   return (
     <div className="py-6">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 flex items-center text-brand-primary"
-      >
-        <ArrowLeft className="mr-2 h-5 w-5" />
-        Back
-      </button>
+      <BackButton to={'/scrolls'} />
 
       <div className="mb-6">
         <header>

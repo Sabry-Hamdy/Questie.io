@@ -1,6 +1,6 @@
 import { useRef, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Clock, MoreVertical, Pencil, Plus, Star, Trash } from 'lucide-react';
+import { Clock, MoreVertical, Pencil, Star, Trash } from 'lucide-react';
 
 import Menu from '../../components/Menu';
 import CheckComplete from './CheckComplete';
@@ -23,7 +23,8 @@ export default memo(function QuestCard({ quest }) {
     }
   };
 
-  const handleEdit = () => {
+  const handleEdit = (e) => {
+    e.stopPropagation();
     navigate(`/quests/edit/${quest.id}`);
   };
 

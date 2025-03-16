@@ -15,16 +15,16 @@ import FeatureContainer from '../components/FeatureContainer';
 export default function ScrollsPage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const notes = useSelector((state) => state.scrolls.notes);
+  const scrolls = useSelector((state) => state.scrolls.scrolls) || [];
 
-  const searchNotes =
+  const searchScrolls =
     searchTerm !== ''
-      ? notes.filter(
-          (note) =>
-            note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            note.content.toLowerCase().includes(searchTerm.toLowerCase()),
+      ? scrolls.filter(
+          (scroll) =>
+            scroll.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            scroll.content.toLowerCase().includes(searchTerm.toLowerCase()),
         )
-      : notes;
+      : scrolls;
 
   return (
     <FeatureContainer>
@@ -50,7 +50,7 @@ export default function ScrollsPage() {
           </button>
         </div>
 
-        <Scrolls searchNotes={searchNotes} />
+        <Scrolls scrolls={searchScrolls} />
 
         <Modal.Window name="scroll-delete">
           <ConfirmDelete

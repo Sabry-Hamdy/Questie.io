@@ -8,7 +8,7 @@ export default function CheckComplete({ reference, quest }) {
 
   const handleQuestToggle = useCallback(
     function handleQuestToggle(e) {
-      e.stopPropagation();
+      // e.stopPropagation();
 
       dispatch(toggleQuestCompletion(quest.id));
 
@@ -26,7 +26,9 @@ export default function CheckComplete({ reference, quest }) {
         onChange={handleQuestToggle}
         className="h-4 w-4 cursor-pointer rounded text-brand-primary focus:ring-brand-primary"
       />
-      <label htmlFor={`complete-quest-${quest.id}`}>Completed</label>
+      <label className="cursor-pointer" htmlFor={`complete-quest-${quest.id}`}>
+        Completed
+      </label>
     </div>
   );
 }

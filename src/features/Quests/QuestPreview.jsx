@@ -51,7 +51,7 @@ export default function QuestPreview() {
   return (
     <Modal>
       <div className="py-6">
-        <BackButton />
+        <BackButton to={'/quests'} />
 
         <div
           className={`rounded-lg p-6 shadow-lg ${

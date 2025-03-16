@@ -8,7 +8,8 @@ export default memo(function ScrollCard({ note }) {
   const navigate = useNavigate();
   const { title, tome, preview, createdAt: date, id: noteId } = note;
 
-  const handleEdit = (noteId) => {
+  const handleEdit = (e) => {
+    e.stopPropagation();
     navigate(`/scrolls/edit/${noteId}`);
   };
 
@@ -23,8 +24,9 @@ export default memo(function ScrollCard({ note }) {
 
         <div className="absolute right-6 top-4">
           <Menu.Toggle id={noteId} icon={MoreVertical} />
+
           <Menu.List id={noteId}>
-            <Menu.Item onClick={() => handleEdit(noteId)}>
+            <Menu.Item onClick={handleEdit}>
               <Edit className="mr-2 h-4 w-4" /> Edit
             </Menu.Item>
 

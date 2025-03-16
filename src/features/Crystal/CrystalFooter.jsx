@@ -19,7 +19,11 @@ export default function CrystalFooter() {
         </div>
         <div className="text-center">
           <div className="text-2xl font-bold text-accent-purple">
-            {totalFocus}
+            {totalFocus / 60 < 1
+              ? `${totalFocus}s`
+              : totalFocus / 60 >= 1 && totalFocus / 60 < 60
+                ? `${Math.floor(totalFocus / 60)}m`
+                : `${Math.floor(totalFocus / 60 / 60)}h`}
           </div>
           <div className="text-sm text-text-secondary">Total Focus Time</div>
         </div>

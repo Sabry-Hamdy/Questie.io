@@ -54,8 +54,8 @@ function Item({ children, onClick, danger, icon: Icon }) {
   const { close } = useContext(MenuContext);
 
   function handleClick(e) {
-    e.stopPropagation();
-    onClick?.();
+    // e.stopPropagation();
+    onClick?.(e);
     close();
   }
 

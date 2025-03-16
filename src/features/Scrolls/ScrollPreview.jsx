@@ -14,11 +14,11 @@ export default function ScrollPreview() {
   const { scrollId } = useParams();
   const navigate = useNavigate();
 
-  const note = useSelector((state) =>
-    state.scrolls.notes.find((n) => Number(n.id) === Number(scrollId)),
+  const scroll = useSelector((state) =>
+    state.scrolls.scrolls.find((n) => Number(n.id) === Number(scrollId)),
   );
 
-  if (!note) {
+  if (!scroll) {
     return <ErrorMessage message="Scroll not found" />;
   }
 
@@ -29,26 +29,26 @@ export default function ScrollPreview() {
   return (
     <Modal>
       <div className="py-6">
-        <BackButton />
+        <BackButton to={'/scrolls'} />
 
         <div className="mb-6 flex items-center justify-between">
           <header>
             <h1 className="text-2xl font-bold text-brand-primary">
-              {note.title}
+              {scroll.title}
             </h1>
-            <p className="text-text-secondary">{note.tome}</p>
+            <p className="text-text-secondary">{scroll.tome}</p>
           </header>
 
           <div className="relative">
             <Menu>
-              <Menu.Toggle id={note.id} icon={MoreVertical} />
+              <Menu.Toggle id={scroll.id} icon={MoreVertical} />
 
-              <Menu.List id={note.id}>
+              <Menu.List id={scroll.id}>
                 <Menu.Item onClick={handleEdit}>
                   <Edit className="mr-2 h-4 w-4" /> Edit
                 </Menu.Item>
 
-                <Modal.Open opens="scroll-delete" itemId={note.id}>
+                <Modal.Open opens="scroll-delete" itemId={scroll.id}>
                   <Menu.Item danger={true}>
                     <Trash className="mr-2 h-4 w-4" /> Delete
                   </Menu.Item>
@@ -59,11 +59,11 @@ export default function ScrollPreview() {
         </div>
 
         <div className="rounded-lg bg-background-secondary p-4">
-          <p className="text-text-primary">{note.content}</p>
+          <p className="text-text-primary">{scroll.content}</p>
         </div>
 
         <footer className="mt-4 text-text-secondary">
-          Created on: {new Date(note.createdAt).toLocaleDateString()}
+          Created on: {new Date(scroll.createdAt).toLocaleDateString()}
         </footer>
 
         <Modal.Window name="scroll-delete">

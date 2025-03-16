@@ -11,7 +11,7 @@ export default function Quests() {
   const [searchParams] = useSearchParams();
   const quests = useSelector((state) => state.quests.quests) || [];
 
-  if (quests.length === 0) {
+  if (!quests.length) {
     return <Empty message="No quests found" icon={Scroll} />;
   }
 
